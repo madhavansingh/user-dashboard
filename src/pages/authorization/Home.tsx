@@ -9,9 +9,9 @@ const Home = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative overflow-hidden">
-        <div className="absolute inset-0 gradient-hero opacity-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/10 to-accent/10" />
         <div className="container mx-auto px-4 py-20 relative">
-          <div className="max-w-4xl mx-auto text-center space-y-8 animate-fade-in-up">
+          <div className="max-w-4xl mx-auto text-center space-y-8">
             <div className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm font-medium">
               <Sparkles className="w-4 h-4" />
               AI-Powered Event Discovery
@@ -19,7 +19,7 @@ const Home = () => {
             
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               Never Miss a{" "}
-              <span className="gradient-accent bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
                 Campus Event
               </span>
               {" "}Again
@@ -33,7 +33,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
                 size="lg" 
-                className="gradient-primary text-lg px-8 py-6 rounded-2xl hover:scale-105 transition-transform shadow-glow"
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground text-lg px-8 py-6 rounded-2xl hover:scale-105 transition-transform shadow-lg"
                 onClick={() => navigate("/auth")}
               >
                 Get Started
@@ -59,7 +59,7 @@ const Home = () => {
             ].map((stat, i) => (
               <div 
                 key={i}
-                className="bg-card p-6 rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 text-center"
+                className="bg-card p-6 rounded-2xl border shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 text-center"
               >
                 <stat.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
                 <div className="text-3xl font-bold text-primary">{stat.value}</div>
@@ -101,7 +101,7 @@ const Home = () => {
             ].map((feature, i) => (
               <div 
                 key={i}
-                className="bg-card p-8 rounded-2xl shadow-card hover:shadow-card-hover transition-all duration-300 hover:scale-105 group"
+                className="bg-card p-8 rounded-2xl border shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 group"
               >
                 <feature.icon className={`w-12 h-12 ${feature.color} mb-4 group-hover:scale-110 transition-transform`} />
                 <h3 className="text-2xl font-semibold mb-3">{feature.title}</h3>
@@ -115,14 +115,14 @@ const Home = () => {
       {/* CTA */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto bg-card rounded-3xl p-12 shadow-card-hover relative overflow-hidden">
-            <div className="absolute inset-0 gradient-primary opacity-5" />
+          <div className="max-w-4xl mx-auto bg-card rounded-3xl p-12 border shadow-lg relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5" />
             <div className="relative text-center space-y-6">
               <h2 className="text-4xl font-bold">Ready to Transform Your Campus Experience?</h2>
               <p className="text-xl text-muted-foreground">Join thousands of students discovering events they love</p>
               <Button 
                 size="lg"
-                className="gradient-accent text-lg px-8 py-6 rounded-2xl hover:scale-105 transition-transform"
+                className="bg-gradient-to-r from-secondary to-accent hover:from-secondary/90 hover:to-accent/90 text-secondary-foreground text-lg px-8 py-6 rounded-2xl hover:scale-105 transition-transform shadow-lg"
                 onClick={() => navigate("/auth")}
               >
                 Start Discovering Events

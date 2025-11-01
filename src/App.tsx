@@ -22,6 +22,7 @@ interface User {
   id: string;
   email: string;
   role?: "user" | "organizer" | "authority";
+  onboardingComplete?: boolean;
 }
 
 const queryClient = new QueryClient();
@@ -46,7 +47,15 @@ const App = () => {
 
   const handleRoleSelect = (role: "user" | "organizer" | "authority") => {
     if (user) {
-      const updatedUser = { ...user, role };
+      const updatedUser = { ...user, role, onboardingComplete: false };
+      setUser(updatedUser);
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+    }
+  };
+
+  const handleOnboardingComplete = () => {
+    if (user) {
+      const updatedUser = { ...user, onboardingComplete: true };
       setUser(updatedUser);
       localStorage.setItem("user", JSON.stringify(updatedUser));
     }
@@ -55,6 +64,7 @@ const App = () => {
   const handleLogout = () => {
     setUser(null);
     localStorage.removeItem("user");
+    localStorage.removeItem("userData");
   };
 
   if (loading) {
@@ -98,7 +108,11 @@ const App = () => {
                 !user || user.role !== "user" ? (
                   <Navigate to="/auth" />
                 ) : (
-                  <UserDashboard onLogout={handleLogout} />
+                  <UserDashboard 
+                    onLogout={handleLogout} 
+                    onboardingComplete={user.onboardingComplete || false}
+                    onOnboardingComplete={handleOnboardingComplete}
+                  />
                 )
               }
             />
