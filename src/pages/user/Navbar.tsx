@@ -17,9 +17,10 @@ interface NavbarProps {
   darkMode: boolean;
   onToggleDarkMode: () => void;
   onNavigate: (page: string) => void;
+  onLogout: () => void;
 }
 
-export function Navbar({ userName, points, darkMode, onToggleDarkMode, onNavigate }: NavbarProps) {
+export function Navbar({ userName, points, darkMode, onToggleDarkMode, onNavigate, onLogout }: NavbarProps) {
   const [notifications] = useState(3);
 
   return (
@@ -92,7 +93,7 @@ export function Navbar({ userName, points, darkMode, onToggleDarkMode, onNavigat
                 <SettingsIcon className="w-4 h-4 mr-2" />
                 Settings
               </DropdownMenuItem>
-              <DropdownMenuItem className="text-destructive">
+              <DropdownMenuItem onClick={onLogout} className="text-destructive">
                 <LogOut className="w-4 h-4 mr-2" />
                 Logout
               </DropdownMenuItem>
